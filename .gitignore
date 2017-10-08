@@ -5,3 +5,4 @@ __pycache__/
 bin/__pycache__/
 .DS_Store
 .sconsign.dblite
+*.pyc
