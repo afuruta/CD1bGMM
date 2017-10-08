@@ -28,4 +28,4 @@ then activate the environment with
 
 ## Generate results
 
-Simply issue the command `scons`, and plot output will be created in a directory named `output`.
+Simply issue the command `scons`. Necessary data will be downloaded, and plot output will be created in a directory named `output`.
