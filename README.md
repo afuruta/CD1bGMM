@@ -20,7 +20,7 @@ For installing scons, and python dependencies, [conda](https://conda.io/docs/) i
 ```bash
 conda install scons scipy matplotlib seaborn pandas biopython scikit-learn
 ```
-A linux spec file for a python2 environment is included (`spec-file.txt`), which may be used to create a conda environment containing all necessary dependencies.
+Alternatively, a linux spec file for a python2 environment is included (`spec-file.txt`), which may be used to create a conda environment containing all necessary dependencies.
 To create an environment called `myenv`, execute  
 `conda create --name myenv --file spec-file.txt`,  
 then activate the environment with  
