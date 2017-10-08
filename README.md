@@ -2,7 +2,7 @@
 
 Reproduces plots for our paper: DeWitt et al., *An MHC-independent T-cell repertoire is enriched during active tuberculosis*, [eLife 2017 🤞]().
 
-## DEPENDENCIES
+## Dependencies
 * scons
 * Python 2.7+/3.5+, with modules:
   * scipy
