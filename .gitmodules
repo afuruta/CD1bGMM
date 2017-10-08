@@ -1,0 +1,4 @@
+[submodule "tcrdist"]
+	path = bin/tcrdist
+	url = https://github.com/phbradley/tcr-dist.git
+	branch = packagify
