@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function, division
 from utils import *
 import argparse, glob
 from sklearn.metrics.pairwise import pairwise_distances
@@ -39,7 +40,7 @@ def main():
 
     print('generating sample/TCR matrix from immunoSEQ files:')
     X, TCRs, _ = load_tsvs(args.tetramer, Vmap=args.Vmap)
-    print('done, {:,} samples X {:,} TCRs'.format(*X.shape), flush=True)
+    print('done, {:,} samples X {:,} TCRs'.format(*X.shape))
 
     y = []
     subject = []
@@ -68,7 +69,7 @@ def main():
     distance_calculator = DistanceCalculator('human')
 
     distances = pairwise_distances(scipy.array([range(TCRs.shape[0])]).T, metric=index_dist, n_jobs=args.jobs, TCRs=TCRs, distance_calculator=distance_calculator)
-    print('manifold learning... ', end='', flush=True)
+    print('manifold learning... ', end='')
     assert distances.min() >= 0
 
     X_manifold = TSNE(perplexity=args.perplexity, metric='precomputed', verbose=1).fit_transform(distances)

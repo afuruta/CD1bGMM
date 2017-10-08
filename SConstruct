@@ -27,14 +27,10 @@ tcrdist_setup = env.Command(['bin/tcrdist/datasets',
                             None,
                             'cd bin/tcrdist && python setup.py')
 
-# download Adaptive and NN-distantce data
-download = env.Command('data.tar.gz',
-                       None,
-                       'wget https://www.dropbox.com/s/3dl1acdhfqhrlih/data.tar.gz')
-# unzip and delete archive
+# download/unzip Adaptive and NN-distantce data
 data = env.Command('data/',
-                   download,
-                   'tar -zxvf $SOURCE && rm $SOURCE')
+                   None,
+                   'wget https://www.dropbox.com/s/3dl1acdhfqhrlih/data.tar.gz && tar -zxvf data.tar.gz && rm data.tar.gz')
 
 
 # manifold embedding for CD1b-GMM tetramer sorted sequences
@@ -52,7 +48,8 @@ outbase = 'output/classify'
 classification = env.Command([outbase + '.' + f for f in ['canonical.pdf',
                                                           'cdr3_length.pdf',
                                                           'meanNNdist.pdf',
-                                                          'decision.pdf',
+                                                          'GEM-TCR_motifs.decision.pdf',
+                                                          'TCRdist.decision.pdf',
                                                           'roc.pdf']],
                              data,
                              'python bin/classify.py ' + outbase + ' $SOURCE/Adaptive/clinical_groups.tsv $SOURCE/NNdist/tmp.*wsplit*NNdistance.tsv')

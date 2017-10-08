@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# from learn import *
+from __future__ import print_function, division
 import argparse, scipy
 from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import roc_curve, auc, confusion_matrix
@@ -23,7 +23,7 @@ def parse_nndist(nndist_files, clinical_groups):
     df_clinical_groups.loc[df_clinical_groups['class'] == 'active'] = 'active\nTB'
     df = pd.DataFrame()
     for file in nndist_files:
-        print('processing ' + file, flush=True)
+        print('processing ' + file)
         if 'resort' in file:
             sorted_population = 'in vitro'
         elif 'tetpos' in file:
@@ -240,7 +240,7 @@ def main():
         plt.axhline(y=.5, ls='--', color='k', lw=1)
         plt.ylim([0, 1])
         sns.despine()
-        plt.savefig('{}.{}.decision.pdf'.format(args.outbase, method), bbox_inches='tight')
+        plt.savefig('{}.{}.decision.pdf'.format(args.outbase, method).replace(' ', '_'), bbox_inches='tight')
 
         # cross validated roc (negative and active only)
         fpr, tpr, _ = roc_curve(y[~df2_rows_1052] == 'active\nTB',
