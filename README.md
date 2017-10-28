@@ -1,6 +1,6 @@
 # CD1bGMM
 
-Reproduces plots for our paper: DeWitt et al., *An MHC-independent T-cell repertoire is enriched during active tuberculosis*, [eLife 2017 🤞]().
+Reproduces plots for our paper: DeWitt et al., *An MHC-independent T-cell repertoire is enriched during active tuberculosis*.
 
 ## Dependencies
 * scons
