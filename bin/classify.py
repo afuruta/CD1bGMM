@@ -163,6 +163,30 @@ def main():
     plt.savefig(args.outbase + '.cdr3_length.pdf', bbox_inches='tight')
 
     # mean NNdists
+    print('alpha TCRdist distance significance:')
+    print('ex vivo')
+    print('    latent Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'IGRA\npositive'), 'CD1b-GMM repertoire distance'])[1]))
+    print('    active Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'active\nTB')    , 'CD1b-GMM repertoire distance'])[1]))
+    print('in vitro')
+    print('    latent Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'IGRA\npositive'), 'CD1b-GMM repertoire distance'])[1]))
+    print('    active Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'ex vivo') & (df_mean['clinical group'] == 'active\nTB')    , 'CD1b-GMM repertoire distance'])[1]))
+    print('beta TCRdist distance significance:')
+    print('ex vivo')
+    print('    latent Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'IGRA\npositive'), 'CD1b-GMM repertoire distance'])[1]))
+    print('    active Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='alpha') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'active\nTB')    , 'CD1b-GMM repertoire distance'])[1]))
+    print('in vitro')
+    print('    latent Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'IGRA\npositive'), 'CD1b-GMM repertoire distance'])[1]))
+    print('    active Vs negative: {}'.format(ttest_ind(df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'IGRA\nnegative'), 'CD1b-GMM repertoire distance'],
+                                                        df_mean.loc[(~df_mean_rows_1052) & (df_mean.locus=='beta') & (df_mean['sorted population'] == 'in vitro') & (df_mean['clinical group'] == 'active\nTB')    , 'CD1b-GMM repertoire distance'])[1]))
+
+
     plt.figure(figsize=(5,3))
     plt.subplot(1, 2, 1)
     ax = sns.boxplot(x='sorted population', hue='clinical group', y='CD1b-GMM repertoire distance', data=df_mean[(~df_mean_rows_1052) & (df_mean.locus=='alpha')],

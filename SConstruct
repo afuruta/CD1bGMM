@@ -25,7 +25,7 @@ tcrdist_setup = env.Command(['bin/tcrdist/datasets',
                              'bin/tcrdist/external',
                              'bin/tcrdist/testing_ref'],
                             None,
-                            'cd bin/tcrdist && yes | python setup.py')
+                            'cd bin/tcrdist && python setup.py')
 
 # download/unzip Adaptive and NN-distantce data
 data = env.Command('data/',
