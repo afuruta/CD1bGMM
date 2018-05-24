@@ -1,4 +1,4 @@
-[submodule "tcrdist"]
+[submodule "bin/tcrdist"]
 	path = bin/tcrdist
 	url = https://github.com/phbradley/tcr-dist.git
-	branch = packagify
+	branch = CD1bGMM_submodule
