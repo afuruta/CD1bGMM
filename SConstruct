@@ -27,10 +27,11 @@ tcrdist_setup = env.Command(['bin/tcrdist/datasets',
                             None,
                             'cd bin/tcrdist && python setup.py')
 
-# download/unzip Adaptive and NN-distantce data
+# download/unzip Adaptive tsv and TCRdist NN-distantce data
+immuneaccess_link = 'https://s3-us-west-2.amazonaws.com/publishedproject-supplements/seshadri-2018-journalofimmunology/seshadri-2018-journalofimmunology-data.tar.gz'
 data = env.Command('data/',
                    None,
-                   'wget https://www.dropbox.com/s/3dl1acdhfqhrlih/data.tar.gz && tar -zxvf data.tar.gz && rm data.tar.gz')
+                   'mkdir data && wget {} -O data.tar.gz && tar -zxvf data.tar.gz && rm data.tar.gz'.format(immuneaccess_link))
 
 
 # manifold embedding for CD1b-GMM tetramer sorted sequences
