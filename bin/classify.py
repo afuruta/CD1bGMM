@@ -102,7 +102,6 @@ def main():
     plt.setp(ax.lines, color='k')
     sns.swarmplot(x='clinical group', y=r'GEM-TCR$\alpha$' '\nmotif frequency', data=df_burden[~df_burden_rows_1052],
                   order=('IGRA\nnegative', 'IGRA\npositive', 'active\nTB'), palette=('gray', 'orange', 'red'), dodge=True, edgecolor='k', linewidth=1)
-    plt.legend(loc=(.01, .4), frameon=True)
     plt.ylim([0, None])
     sns.despine()
     plt.tight_layout()
@@ -213,7 +212,7 @@ def main():
     plt.savefig(args.outbase + '.meanNNdist.pdf')
 
     df2 = pd.DataFrame(columns=('subject', 'clinical group', 'total alpha abundance', 'total beta abundance', r'mean TCR$\alpha$ CDR3 length', r'mean TCR$\beta$ CDR3 length', r'GEM-TCR$\alpha$' '\nmotif frequency', r'GEM-TCR$\beta$' '\nmotif frequency', 'x1', 'x2', 'x3', 'x4'))
-    for i, (name, group) in enumerate(df_mean.groupby(('subject', 'clinical group'))):
+    for i, (name, group) in enumerate(df_mean.groupby(['subject', 'clinical group'])):
         df2.loc[i] = list(name) + \
                      [group['total abundance'][group.locus == 'alpha'].iloc[0],
                       group['total abundance'][group.locus == 'beta'].iloc[0],
@@ -227,9 +226,9 @@ def main():
                       group['CD1b-GMM repertoire distance'][(group['sorted population'] == 'in vitro') & (group.locus == 'beta')].iloc[0]]
 
     df2_rows_1052 = df2.subject.isin(['TB-1052', 'TB-1052-2M', 'TB-1052-6M'])
-    X_canonical = df2.as_matrix(columns=(r'GEM-TCR$\alpha$' '\nmotif frequency', r'GEM-TCR$\beta$' '\nmotif frequency'))
-    X_nndist = df2.as_matrix(columns=('x1', 'x2', 'x3', 'x4'))
-    y = df2['clinical group'].as_matrix()
+    X_canonical = df2.loc[:, [r'GEM-TCR$\alpha$' '\nmotif frequency', r'GEM-TCR$\beta$' '\nmotif frequency']].values
+    X_nndist = df2.loc[:, ['x1', 'x2', 'x3', 'x4']].values
+    y = df2['clinical group'].values
     # fit on only active vs negative, and no 1052
 
     df_roc = pd.DataFrame()
@@ -249,7 +248,7 @@ def main():
                                                                   y[~df2_rows_1052],
                                                                   cv=10)
         print(method)
-        print(confusion_matrix(y[~df2_rows_1052], df2.loc[~df2_rows_1052, 'prediction'].as_matrix(), labels=['IGRA\nnegative', 'IGRA\npositive', 'active\nTB']))
+        print(confusion_matrix(y[~df2_rows_1052], df2.loc[~df2_rows_1052, 'prediction'].values, labels=['IGRA\nnegative', 'IGRA\npositive', 'active\nTB']))
 
 
         df2.loc[df2.subject == 'TB-1052', 'time point'] = 'pre-tx'
