@@ -1,6 +1,10 @@
 # CD1bGMM
 
-Reproduces plots for our paper: DeWitt et al., *An MHC-independent T-cell repertoire is enriched during active tuberculosis*.
+This repo reproduces analysis and plots for our paper:
+
+**A diverse lipid antigen-specific T cell receptor repertoire is clonally expanded during active tuberculosis**. DeWitt WS, Yu KKQ, Wilburn DB, Sherwood A, Vignali M, Day CL, Scriba TJ, Robins HS, Swanson WJ, Emerson RO, Bradley PH, Seshadri C. In press at _Journal of Immunology_.
+
+Data: http://dx.doi.org/doi:10.21417/B7QG66
 
 ## Dependencies
 * scons
@@ -12,10 +16,10 @@ Reproduces plots for our paper: DeWitt et al., *An MHC-independent T-cell repert
   * biopython
   * scikit-learn
 * TCRdist is a submodule, so clone recursively when you clone this repo with  
-  `git clone --recursive <this repo>`,  
+  `git clone --recursive https://github.com/seshadrilab/CD1bGMM.git`,  
   or if you've already cloned this repo, run  
   `git submodule update --init --recursive` to add the TCRdist submodule.  
-    
+
 For installing scons, and python dependencies, [conda](https://conda.io/docs/) is recommended:
 ```bash
 conda install scons scipy matplotlib seaborn pandas biopython scikit-learn
