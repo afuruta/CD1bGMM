@@ -2,7 +2,7 @@
 
 This repo reproduces analysis and plots for our paper:
 
-**A diverse lipid antigen-specific T cell receptor repertoire is clonally expanded during active tuberculosis**. DeWitt WS, Yu KKQ, Wilburn DB, Sherwood A, Vignali M, Day CL, Scriba TJ, Robins HS, Swanson WJ, Emerson RO, Bradley PH, Seshadri C. In press at _Journal of Immunology_.
+**A diverse lipid antigen-specific T cell receptor repertoire is clonally expanded during active tuberculosis**. DeWitt WS, Yu KKQ, Wilburn DB, Sherwood A, Vignali M, Day CL, Scriba TJ, Robins HS, Swanson WJ, Emerson RO, Bradley PH, Seshadri C. _Journal of Immunology_ June 18, 2018, ji1800186; DOI: https://doi.org/10.4049/jimmunol.1800186.
 
 Data: http://dx.doi.org/doi:10.21417/B7QG66
 
